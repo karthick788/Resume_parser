@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AI Resume Parser</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>🤖 Resume Parser</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item active">
+                    <span class="icon">📊</span> Dashboard
+                </a>
+                <a href="upload.html" class="nav-item">
+                    <span class="icon">📤</span> Upload Resume
+                </a>
+                <a href="resumes.html" class="nav-item">
+                    <span class="icon">📄</span> All Resumes
+                </a>
+                <a href="candidates.html" class="nav-item">
+                    <span class="icon">👥</span> Candidates
+                </a>
+                <a href="analytics.html" class="nav-item">
+                    <span class="icon">📈</span> Analytics
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="btn btn-secondary btn-block">Logout</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="page-header">
+                <h1>Dashboard</h1>
+                <div class="user-info">
+                    <span id="userDisplay">Loading...</span>
+                </div>
+            </header>
+
+            <!-- Metrics Cards -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-icon">📄</div>
+                    <div class="metric-content">
+                        <h3 id="totalResumes">0</h3>
+                        <p>Total Resumes</p>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon">👥</div>
+                    <div class="metric-content">
+                        <h3 id="totalCandidates">0</h3>
+                        <p>Candidates</p>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon">✅</div>
+                    <div class="metric-content">
+                        <h3 id="parsedResumes">0</h3>
+                        <p>Parsed</p>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon">⏳</div>
+                    <div class="metric-content">
+                        <h3 id="pendingResumes">0</h3>
+                        <p>Pending</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="dashboard-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Success Rate</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="success-rate">
+                            <div class="progress-circle">
+                                <span id="successRate">0%</span>
+                            </div>
+                            <p>Parsing Success Rate</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Average Experience</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="avg-experience">
+                            <h1 id="avgExperience">0</h1>
+                            <p>Years</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>Recent Resumes</h2>
+                    <a href="resumes.html" class="btn btn-sm">View All</a>
+                </div>
+                <div class="card-body">
+                    <div id="recentResumes" class="table-container">
+                        <p class="loading">Loading...</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>

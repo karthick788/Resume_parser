@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Resume - AI Resume Parser</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>🤖 Resume Parser</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <span class="icon">📊</span> Dashboard
+                </a>
+                <a href="upload.html" class="nav-item active">
+                    <span class="icon">📤</span> Upload Resume
+                </a>
+                <a href="resumes.html" class="nav-item">
+                    <span class="icon">📄</span> All Resumes
+                </a>
+                <a href="candidates.html" class="nav-item">
+                    <span class="icon">👥</span> Candidates
+                </a>
+                <a href="analytics.html" class="nav-item">
+                    <span class="icon">📈</span> Analytics
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="btn btn-secondary btn-block">Logout</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="page-header">
+                <h1>Upload Resume</h1>
+            </header>
+
+            <div class="upload-section">
+                <div class="card">
+                    <div class="card-body">
+                        <div id="dropZone" class="drop-zone">
+                            <div class="drop-zone-icon">📁</div>
+                            <h3>Drag & Drop Resume Here</h3>
+                            <p>or click to browse</p>
+                            <p class="file-info">Supported formats: PDF, DOCX (Max 5MB)</p>
+                            <input type="file" id="fileInput" accept=".pdf,.docx,.doc" style="display: none;">
+                        </div>
+
+                        <div id="filePreview" class="file-preview" style="display: none;">
+                            <div class="file-item">
+                                <span class="file-icon">📄</span>
+                                <div class="file-details">
+                                    <p class="file-name" id="fileName"></p>
+                                    <p class="file-size" id="fileSize"></p>
+                                </div>
+                                <button id="removeFile" class="btn-icon">✕</button>
+                            </div>
+                        </div>
+
+                        <div id="uploadProgress" class="upload-progress" style="display: none;">
+                            <div class="progress-bar">
+                                <div id="progressFill" class="progress-fill"></div>
+                            </div>
+                            <p id="progressText">Uploading...</p>
+                        </div>
+
+                        <div id="uploadMessage" class="message" style="display: none;"></div>
+
+                        <div class="upload-actions">
+                            <button id="uploadBtn" class="btn btn-primary" disabled>Upload & Parse</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Parsing Result -->
+                <div id="parseResult" class="card" style="display: none;">
+                    <div class="card-header">
+                        <h2>Parsing Result</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="resultContent"></div>
+                        <div class="result-actions">
+                            <a id="viewCandidateBtn" href="#" class="btn btn-primary">View Candidate Details</a>
+                            <button id="uploadAnotherBtn" class="btn btn-secondary">Upload Another</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/upload.js"></script>
+</body>
+
+</html>
