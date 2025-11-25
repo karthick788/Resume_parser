@@ -29,18 +29,22 @@ venv\Scripts\activate  # Windows
 # Install dependencies
 pip install -r requirements.txt
 
+# Install email validator (required for Pydantic)
+pip install pydantic[email]
+
 # Download spaCy model
 python -m spacy download en_core_web_sm
 
 # Create .env file
-copy .env.example .env
+copy .env.example .env  # Windows
+# cp .env.example .env  # Linux/Mac
 ```
 
 **2. Edit .env file**
 - Open `backend/.env`
 - Change `SECRET_KEY` to a random string
 
-**3. Start Backend**
+**3. Start Backend** (Terminal 1)
 ```bash
 cd backend
 venv\Scripts\activate
@@ -49,10 +53,10 @@ python -m uvicorn app.main:app --reload
 
 ✅ Backend running at: http://localhost:8000
 
-**4. Start Frontend** (new terminal)
+**4. Start Frontend** (Terminal 2 - new terminal)
 ```bash
-cd frontend
-python -m http.server 8080
+# From the root ResumeParser directory
+python -m http.server 8080 --directory frontend
 ```
 
 ✅ Frontend running at: http://localhost:8080
@@ -60,10 +64,18 @@ python -m http.server 8080
 ## First Time Setup
 
 **Create Admin User**
+
+PowerShell (Windows):
+```powershell
+$body = @{username='admin'; email='admin@example.com'; password='admin123'; role='recruiter'} | ConvertTo-Json
+Invoke-WebRequest -Uri 'http://127.0.0.1:8000/api/auth/register' -Method POST -Body $body -ContentType 'application/json'
+```
+
+Bash (Linux/Mac):
 ```bash
 curl -X POST "http://localhost:8000/api/auth/register" \
   -H "Content-Type: application/json" \
-  -d "{\"username\":\"admin\",\"email\":\"admin@example.com\",\"password\":\"admin123\",\"role\":\"admin\"}"
+  -d '{"username":"admin","email":"admin@example.com","password":"admin123","role":"recruiter"}'
 ```
 
 ## Usage

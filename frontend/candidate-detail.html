@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Details - AI Resume Parser</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>🤖 Resume Parser</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <span class="icon">📊</span> Dashboard
+                </a>
+                <a href="upload.html" class="nav-item">
+                    <span class="icon">📤</span> Upload Resume
+                </a>
+                <a href="resumes.html" class="nav-item">
+                    <span class="icon">📄</span> All Resumes
+                </a>
+                <a href="candidates.html" class="nav-item active">
+                    <span class="icon">👥</span> Candidates
+                </a>
+                <a href="analytics.html" class="nav-item">
+                    <span class="icon">📈</span> Analytics
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="btn btn-secondary btn-block">Logout</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="page-header">
+                <h1>Candidate Details</h1>
+                <div class="user-info">
+                    <a href="candidates.html" class="btn btn-secondary btn-sm">← Back to Candidates</a>
+                </div>
+            </header>
+
+            <!-- Loading State -->
+            <div id="loadingState" class="loading">
+                <p>Loading candidate details...</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="errorState" class="error-message" style="display: none;"></div>
+
+            <!-- Candidate Details -->
+            <div id="candidateDetails" style="display: none;">
+                <!-- Personal Information -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Personal Information</h2>
+                        <div>
+                            <button id="editBtn" class="btn btn-primary btn-sm">Edit</button>
+                            <button id="deleteBtn" class="btn btn-danger btn-sm">Delete</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="detail-grid">
+                            <div class="detail-item">
+                                <label>Full Name</label>
+                                <p id="candidateName">-</p>
+                            </div>
+                            <div class="detail-item">
+                                <label>Email</label>
+                                <p id="candidateEmail">-</p>
+                            </div>
+                            <div class="detail-item">
+                                <label>Phone</label>
+                                <p id="candidatePhone">-</p>
+                            </div>
+                            <div class="detail-item">
+                                <label>Location</label>
+                                <p id="candidateLocation">-</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Summary -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Professional Summary</h2>
+                    </div>
+                    <div class="card-body">
+                        <p id="candidateSummary">-</p>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Skills</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="candidateSkills" class="skills-container">
+                            <p>No skills found</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Work Experience</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="candidateExperience">
+                            <p>No experience found</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Education</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="candidateEducation">
+                            <p>No education found</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Certifications</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="candidateCertifications">
+                            <p>No certifications found</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resume Score -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Resume Score</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="score-display">
+                            <div class="score-circle">
+                                <span id="resumeScore">0</span>
+                            </div>
+                            <p>Overall Score</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/candidate-detail.js"></script>
+</body>
+
+</html>
